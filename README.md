@@ -23,5 +23,9 @@ What I learned:
 - Input validation concepts
 - Building a complete program flow
 
+Simulation:
+<img width="371" height="315" alt="image" src="https://github.com/user-attachments/assets/8fda0011-1d78-4557-9f81-9c49b4337b1e" />
+
+
 Project Status:
 - In progress
