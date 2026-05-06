@@ -1,19 +1,31 @@
 Java Grade Tracker (GUI)
 
-This is my first Java portfolio project. It is a simple application that uses dialog boxes (JOptionPane) to allow users to enter assignment names and grades, and then calculates statistics such as average, highest, and lowest grades.
+This is a beginner Java project that allows users to:
+- Enter their name
+- Input multiple classes
+- Input grades for each class
+- View all classes with their grades
+- See the average grade
 
-Features (Planned):
-- Input assignment names and grades
-- Calculate average grade
-- Find highest and lowest grade
-- Display results using dialog boxes
+The project uses arrays, loops, user input (JOptionPane), and basic exception handling.
 
-Technologies:
-- Java
-- JOptionPane (GUI)
-- Arrays
-- Loops
-- Methods
+Features:
+- GUI input using JOptionPane  
+- Stores class names and grades  
+- Calculates average grade  
+- Handles invalid numeric input  
+- Clean formatted output  
+
+What I learned:
+- Arrays and loops
+- Data collection and processing
+- Exception handling (try/catch)
+- Input validation concepts
+- Building a complete program flow
+
+Simulation:
+<img width="371" height="315" alt="image" src="https://github.com/user-attachments/assets/8fda0011-1d78-4557-9f81-9c49b4337b1e" />
+
 
 Project Status:
 - In progress
