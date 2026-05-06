@@ -6,24 +6,46 @@ public class GradetrackerGUI {
         String name;
         String numOfClass; // varible as string
         String message;
-        
         int numOfClass2; // variable to be converted to int
-        name = JOptionPane.showInputDialog("Enter your name: ");
-        numOfClass = JOptionPane.showInputDialog(null, "Enter the number of classes you want: ");
-        numOfClass2 = Integer.parseInt(numOfClass); // converts from String to Int
         
-        String[] clss = new String[numOfClass2]; // array to store multiple values
-        double[] grade = new double[numOfClass2];
+        name = JOptionPane.showInputDialog("Enter your name: ");
+        /*name = JOptionPane.showInputDialog("Enter your name: ");
+        numOfClass = JOptionPane.showInputDialog(null, "Enter the number of classes you want: ");
+        numOfClass2 = Integer.parseInt(numOfClass); // converts from String to Int */
+
+        boolean val = false;
+        numOfClass = "";
+        numOfClass2 = 0;
+
+        while (numOfClass2 <= 0 && val == false) 
+        {
+            try {
+                numOfClass = JOptionPane.showInputDialog(null, "Enter the number of classes you want: ");
+                numOfClass2 = Integer.parseInt(numOfClass); // converts from String to Int
+    
+                if ( numOfClass2 > 0) {
+                    val = true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "You entered an invalid input. Try again! \n");
+                }
+                
+            } catch (Exception e) {
+               
+                JOptionPane.showMessageDialog(null, "You entered an invalid input. Try again! \n");
+                
+            }
+        }
+        GradeTracker tracker = new GradeTracker(numOfClass2);
                 
         for (int i = 0; i < numOfClass2; i++)
         {
-            clss[i] = JOptionPane.showInputDialog("Enter the class" + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
+            tracker.clss[i] = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
             boolean valid = false;
 
             while (valid == false) // future improvement: validate that class name is not numeric!!!
                 try 
             {
-                grade[i] = Double.parseDouble(JOptionPane.showInputDialog("Enter grade for class " + (i+1) + ": "));
+                tracker.grade[i] = Double.parseDouble(JOptionPane.showInputDialog("Enter grade for class " + (i+1) + ": "));
                 valid = true;
             } catch (Exception e) 
             {
@@ -34,8 +56,8 @@ public class GradetrackerGUI {
         double total = 0;
         for(int i = 0; i < numOfClass2; i++)
         {
-            message = message + (i+1) + ". "  + clss[i] + "   " + grade[i] +"\n";
-            total = total + grade[i];
+            message = message + (i+1) + ". "  + tracker.clss[i] + "   " + tracker.grade[i] +"\n";
+            total = total + tracker.grade[i];
             
         }
         double average = total / numOfClass2;
