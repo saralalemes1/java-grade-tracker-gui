@@ -9,10 +9,7 @@ public class GradetrackerGUI {
         int numOfClass2; // variable to be converted to int
         
         name = JOptionPane.showInputDialog("Enter your name: ");
-        /*name = JOptionPane.showInputDialog("Enter your name: ");
-        numOfClass = JOptionPane.showInputDialog(null, "Enter the number of classes you want: ");
-        numOfClass2 = Integer.parseInt(numOfClass); // converts from String to Int */
-
+        
         boolean val = false;
         numOfClass = "";
         numOfClass2 = 0;
@@ -53,14 +50,15 @@ public class GradetrackerGUI {
             }
         }
         message = "Hello " + name + "\nThe number of classes you chose was: " + numOfClass2 + "\nHere are your classes and grade:\n"; //initialize the variable message - builds the initial message for the final report
-        double total = 0;
+
+        
         for(int i = 0; i < numOfClass2; i++)
         {
             message = message + (i+1) + ". "  + tracker.clss[i] + "   " + tracker.grade[i] +"\n";
-            total = total + tracker.grade[i];
+            
             
         }
-        double average = total / numOfClass2;
+        double average = tracker.calculateAverage();
         String formattedAverage = String.format("%.2f", average);//round average to 2 decimal places
         JOptionPane.showMessageDialog(null, message + "Average Grade: " + formattedAverage);
 
