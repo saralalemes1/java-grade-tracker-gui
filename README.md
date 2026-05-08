@@ -1,6 +1,6 @@
 # Java Grade Tracker (GUI)
 
-## This is a beginner Java project that allows users to:
+ This is a beginner Java project that allows users to:
 - Enter their name
 - Input multiple classes
 - Input grades for each class
@@ -16,6 +16,8 @@ The project uses arrays, loops, user input (JOptionPane), and basic exception ha
 - Handles invalid numeric input  
 - Clean formatted output  
 - Input validation for number of classes
+- Letter grade display (A, B, C, D, F)
+- Javadoc comments for all methods
 
 ## What I learned:
 - Arrays and loops
@@ -23,6 +25,14 @@ The project uses arrays, loops, user input (JOptionPane), and basic exception ha
 - Exception handling (try/catch)
 - Input validation concepts
 - Building a complete program flow
+- Object-Oriented Programming
+- Javadoc documentation
+- Git version control
+
+## Future Improvements
+- Validate that class names are not numeric
+- Handle Cancel button on dialogs
+- Rebuild with Java Swing for a better UI
 
 ## How to Run
 

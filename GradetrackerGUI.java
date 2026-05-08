@@ -9,13 +9,15 @@ public class GradetrackerGUI {
         int numOfClass2; // variable to be converted to int
         
         name = JOptionPane.showInputDialog("Enter your name: ");
-        
+
+        //Initialize the variables:
         boolean val = false;
         numOfClass = "";
         numOfClass2 = 0;
 
-        while (numOfClass2 <= 0 && val == false) 
+        while (numOfClass2 <= 0 && val == false) //while loop to test if user input is correct according to each prompt
         {
+            // catches non-numeric input and prompts user to try again
             try {
                 numOfClass = JOptionPane.showInputDialog(null, "Enter the number of classes you want: ");
                 numOfClass2 = Integer.parseInt(numOfClass); // converts from String to Int
@@ -32,14 +34,14 @@ public class GradetrackerGUI {
                 
             }
         }
-        GradeTracker tracker = new GradeTracker(numOfClass2);
+        GradeTracker tracker = new GradeTracker(numOfClass2); // creates a GradeTracker object to store class names and grades
                 
-        for (int i = 0; i < numOfClass2; i++)
+        for (int i = 0; i < numOfClass2; i++) // nested loop is created to validate input
         {
             tracker.clss[i] = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
             boolean valid = false;
 
-            while (valid == false) // future improvement: validate that class name is not numeric!!!
+            while (valid == false) // future improvement: validate that >> the class name is not numeric!!! <<
                 try 
             {
                 tracker.grade[i] = Double.parseDouble(JOptionPane.showInputDialog("Enter grade for class " + (i+1) + ": "));
@@ -52,10 +54,9 @@ public class GradetrackerGUI {
         message = "Hello " + name + "\nThe number of classes you chose was: " + numOfClass2 + "\nHere are your classes and grade:\n"; //initialize the variable message - builds the initial message for the final report
 
         
-        for(int i = 0; i < numOfClass2; i++)
+        for(int i = 0; i < numOfClass2; i++) // builds the message with each class name, numeric grade, and letter grade
         {
-            message = message + (i+1) + ". "  + tracker.clss[i] + "   " + tracker.grade[i] +"\n";
-            
+            message = message + (i+1) + ". "  + tracker.clss[i] + "   " + tracker.grade[i] + " - " + tracker.getLetterGrade(tracker.grade[i]) + "\n";
             
         }
         double average = tracker.calculateAverage();
