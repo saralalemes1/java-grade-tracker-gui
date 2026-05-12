@@ -46,9 +46,10 @@ The project uses arrays, loops, user input (JOptionPane), and basic exception ha
 3. Compile and run `GradetrackerGUI.java`
 4. A dialog box will appear - follow the prompts to enter your name, classes, and grades
 
-Demo:
-<img width="371" height="315" alt="image" src="https://github.com/user-attachments/assets/8fda0011-1d78-4557-9f81-9c49b4337b1e" />
+### Demo:
+<img width="368" height="317" alt="Screenshot 2026-05-07 211921" src="https://github.com/user-attachments/assets/73ea8cd5-a337-4ad4-b9cb-103b627c8faf" />
 
 
-Project Status:
+
+### Project Status:
 - In progress
