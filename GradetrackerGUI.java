@@ -45,16 +45,34 @@ public class GradetrackerGUI {
             
         for (int i = 0; i < numOfClass2; i++) // nested loop is created to validate input
         {
-            
             String gradeInput = "";//temporary variable to store grade input before parseing, allows null check on cancel
-            tracker.clss[i] = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
-            String clss = tracker.clss[i]; //temporary variable to store clss input before parseing, allows null check on cancel
             boolean valid = false;
-            if ( clss == null) {
-                System.exit(0);
-            }
+            
+            String myClass = "0";
+            while (!tracker.validateClassName(myClass)) 
+                                
+                {
+                    try {
+                        tracker.clss[i] = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
+                        String clss = tracker.clss[i]; //temporary variable to store clss input before parsing, allows null check on cancel
+                        
+                    
+                    if ( clss == null) {
+                        System.exit(0);
+                        }
+                        myClass = clss;
+                        boolean isValid = tracker.validateClassName(myClass);
+                        if (!isValid) 
+                            JOptionPane.showMessageDialog(null, "The class name MUST start with a letter. Try again!");
+                        
+                    } catch (Exception e) {
+                        //no action needed, loop will re-prompt
+            
+                    }
 
-            while (valid == false) // future improvement: validate that >> the class name is not numeric!!! <<
+                }
+                
+            while (!valid)
                 try 
             {
                 gradeInput = JOptionPane.showInputDialog("Enter grade for class " + (i+1) + ": ");
@@ -68,6 +86,7 @@ public class GradetrackerGUI {
                 {JOptionPane.showMessageDialog(null, "Enter a valid number!");}
         
             }
+            
         }
         message = "Hello " + name + "\nThe number of classes you chose was: " + numOfClass2 + "\nHere are your classes and grade:\n"; //initialize the variable message - builds the initial message for the final report
 

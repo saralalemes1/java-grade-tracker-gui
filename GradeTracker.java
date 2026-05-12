@@ -54,5 +54,20 @@ public class GradeTracker {
         } else
             return "F";
     }
+    /**
+     * Validate that class names starts with a letter
+     * @param the class name to validate
+     * @return true if the class name starts with a latter, false otherwise
+     */
+    public boolean validateClassName(String clss)
+    {
+        if (Character.isLetter(clss.charAt(0))) {
+            return true;            
+        } else
+        {
+            return false;
+        }
+
+    }
 
 }
