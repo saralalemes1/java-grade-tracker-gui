@@ -18,7 +18,7 @@ public class GradetrackerGUI {
         numOfClass = "";
         numOfClass2 = 0;
 
-        while (numOfClass2 <= 0 && val == false) //while loop to test if user input is correct according to each prompt
+        while (numOfClass2 <= 0 && !val) //while loop to test if user input is correct according to each prompt
         {
             // catches non-numeric input and prompts user to try again
             try {
@@ -45,7 +45,7 @@ public class GradetrackerGUI {
             
         for (int i = 0; i < numOfClass2; i++) // nested loop is created to validate input
         {
-            String gradeInput = "";//temporary variable to store grade input before parseing, allows null check on cancel
+            String gradeInput = "";//temporary variable to store grade input before parsing, allows null check on cancel
             boolean valid = false;
             
             String myClass = "0";
@@ -53,38 +53,38 @@ public class GradetrackerGUI {
                                 
                 {
                     try {
-                        tracker.clss[i] = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
-                        String clss = tracker.clss[i]; //temporary variable to store clss input before parsing, allows null check on cancel
-                        
-                    
+                        String clss = JOptionPane.showInputDialog("Enter the class " + (i+1) + ": "); //(i + 1) is used because array index starts at 0, but we want to show class numbers starting at 1 to the user
+                                                
                     if ( clss == null) {
-                        System.exit(0);
-                        }
+                        System.exit(0);//check if user clicked on cancel or 'x' button 
+                        }                        
                         myClass = clss;
                         boolean isValid = tracker.validateClassName(myClass);
                         if (!isValid) 
-                            JOptionPane.showMessageDialog(null, "The class name MUST start with a letter. Try again!");
+                            {
+                                JOptionPane.showMessageDialog(null, "The class name MUST start with a letter. Try again!");
+                            } else {
+                                tracker.setClss(i, clss);
+                            }                        
                         
                     } catch (Exception e) {
-                        //no action needed, loop will re-prompt
-            
+                        //no action needed, loop will re-prompt            
                     }
-
                 }
                 
             while (!valid)
                 try 
             {
                 gradeInput = JOptionPane.showInputDialog("Enter grade for class " + (i+1) + ": ");
-                tracker.grade[i] = Double.parseDouble(gradeInput);
-                valid = true;
+                if (gradeInput == null) {System.exit(0);} //check if user clicked on cancel or 'x' button           
+                double parseGrade = Double.parseDouble(gradeInput); //converts from String to double
+                if (tracker.setGrade(i, parseGrade)) {
+                    valid = true;
+                } else {JOptionPane.showMessageDialog(null, "Enter a valid number!");} //else for out of range numbers like 150
+                
             } catch (Exception e) 
             {
-                if (gradeInput == null) {
-                    System.exit(0);
-                } else
-                {JOptionPane.showMessageDialog(null, "Enter a valid number!");}
-        
+                JOptionPane.showMessageDialog(null, "Enter a valid number!"); // catch for non-numeric input like "abc"
             }
             
         }
@@ -93,7 +93,7 @@ public class GradetrackerGUI {
         
         for(int i = 0; i < numOfClass2; i++) // builds the message with each class name, numeric grade, and letter grade
         {
-            message = message + (i+1) + ". "  + tracker.clss[i] + "   " + tracker.grade[i] + " - " + tracker.getLetterGrade(tracker.grade[i]) + "\n";
+            message = message + (i+1) + ". "  + tracker.getClss(i) + "   " + tracker.getGrade(i) + " - " + tracker.getLetterGrade(tracker.getGrade(i)) + "\n";
             
         }
         double average = tracker.calculateAverage();
